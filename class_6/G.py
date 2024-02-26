@@ -1,12 +1,12 @@
 def check(n, m, layer, t):
-    return t >= (2 * n + 2 * m - layer * 4) * layer
+    return t < (2 * n + 2 * m - layer * 4) * layer
 
 
 def lbinsearch(n, m, t):
-    l, r = 0, min(n, m)
+    l, r = 0, min(n, m) // 2
     while l < r:
         layer = (l + r + 1) // 2
-        if not check(n, m, layer, t):
+        if check(n, m, layer, t):
             r = layer - 1
         else:
             l = layer
